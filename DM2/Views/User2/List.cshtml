@@ -1,0 +1,58 @@
+﻿@model IEnumerable<DM2.Models.tbl_user>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>List</title>
+</head>
+<body>
+    <div>
+
+        <table>
+            <tr>
+                <th>Full Name</th>
+                <th>User Name</th>
+                <th>Password</th>
+                <th>Age</th>
+                <th>Color</th>
+            </tr>
+            @foreach (var x in Model)
+            {
+                if (x.Color % 2 == 0)
+                {
+                    <tr bgcolor="#FF0000">
+                        <td>@Html.DisplayFor(a => x.FullName)</td>
+                        <td>@Html.DisplayFor(a => x.UserName)</td>
+                        <td>@Html.DisplayFor(a => x.Password)</td>
+                        <td>@Html.DisplayFor(a => x.Age)</td>
+                        <td>@Html.DisplayFor(a => x.Color)</td>
+                        <td>@Html.ActionLink("Edit", "Edit", new { id = x.Id })</td>
+                        <td>@Html.ActionLink("DELETE", "Delete", new { id = x.Id }, new { onclick="return confirm('are you sure');" })</td>
+                    </tr>
+                }
+                else
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(a => x.FullName)</td>
+                        <td>@Html.DisplayFor(a => x.UserName)</td>
+                        <td>@Html.DisplayFor(a => x.Password)</td>
+                        <td>@Html.DisplayFor(a => x.Age)</td>
+                        <td>@Html.DisplayFor(a => x.Color)</td>
+                        <td>@Html.ActionLink("Edit","Edit",new {id=x.Id })</td>
+                        <td>@Html.ActionLink("DELETE", "Delete", new { id = x.Id }, new { onclick = "return confirm('are you sure');" })</td>
+                    </tr>
+                }
+            }
+
+
+        </table>
+
+    </div>
+</body>
+</html>

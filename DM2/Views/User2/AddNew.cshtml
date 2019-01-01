@@ -1,0 +1,52 @@
+﻿@model DM2.Models.tbl_user
+
+@{
+    ViewBag.Title = "AddNew";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    string c = ViewBag.Controller;
+    string a = ViewBag.Action;
+
+}
+
+<h2>AddNew</h2>
+
+<div class="col-md-4"></div>
+<div class="col-md-4">
+    @using (Html.BeginForm(a, c, FormMethod.Post))
+    {
+        @*<div class="form-group">
+                <label for="txtId" class="form-group">Id : </label>
+                @Html.EditorFor(m => m.Id, new { htmlAttributes = new { @class="form-control" } })
+            </div>*@
+        <div class="form-group">
+            <label for="txtId" class="form-group">Full Name : </label>
+            @Html.EditorFor(m => m.FullName, new { htmlAttributes = new { @class = "form-control", @id = "txtFullname" } })
+        </div>
+        <div class="form-group">
+            <label for="txtId" class="form-group">User Name : </label>
+            @Html.EditorFor(m => m.UserName, new { htmlAttributes = new { @class = "form-control", @id = "txtUserName" } })
+        </div>
+        <div class="form-group">
+            <label for="txtId" class="form-group">Passworx : </label>
+            @Html.EditorFor(m => m.Password, new { htmlAttributes = new { @class = "form-control", @id = "txtPassword" } })
+        </div>
+        <div class="form-group">
+            <label for="txtId" class="form-group">Age : </label>
+            @Html.EditorFor(m => m.Age, new { htmlAttributes = new { @class = "form-control" }, @id = "txtAge" })
+        </div>
+        <div class="form-group">
+            <label for="txtId" class="form-group">Color : </label>
+            @Html.EditorFor(m => m.Color, new { htmlAttributes = new { @class = "form-control", @id = "txtColor" } })
+        </div>
+        <div class="form-group">
+            <label for="txtId" class="form-group">Color : </label>
+           @*@Html.DropDownList("MySkills", (IEnumerable <SelectListItem>)ViewBag.UserTypes,new { htmlAttributes = new { @class = "form-control", @id = "ddlTypes" } })*@
+            @Html.DropDownListFor(m => m.UserTypeId,new DM2.Controllers.User2Controller().getUserTypes(), new { htmlAttributes = new { @class = "form-control", @id = "txtColor" } })
+        </div>
+
+            <input class="btn btn-default" type="submit" value="@ViewBag.BtnText" />
+
+    }
+</div>
+<div class="col-md-4"></div>
